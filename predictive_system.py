@@ -1,10 +1,10 @@
 import streamlit as st
-import pickle
+import joblib
 import numpy as np
 from PIL import Image
 
 # Load your trained model
-model = pickle.load(open('trained_model.sav', 'rb'))
+model = joblib.load('trained_model.pkl')
 
 # Set Streamlit page config
 st.set_page_config(page_title="Rock vs Mine Prediction", layout="centered")
@@ -13,7 +13,7 @@ st.set_page_config(page_title="Rock vs Mine Prediction", layout="centered")
 try:
     banner = Image.open("header_image.jpg")  # Ensure this file exists in the same directory
     st.image(banner, use_container_width=True)
-except Exception as e:
+except Exception:
     st.warning("Local image failed to load. Showing fallback image.")
     st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Sonar_image_example.jpg/640px-Sonar_image_example.jpg", use_container_width=True)
 
@@ -47,6 +47,7 @@ st.markdown("""
 # Prediction logic
 if st.button("Predict"):
     try:
+        # Convert input to list of floats
         input_list = list(map(float, input_data.strip().split(",")))
         if len(input_list) != 60:
             raise ValueError("Please enter exactly 60 values.")
@@ -54,7 +55,12 @@ if st.button("Predict"):
         input_array = np.array(input_list).reshape(1, -1)
         prediction = model.predict(input_array)[0]
 
-        result = "It is a Mine 🚀" if prediction == 'Mine' else "It is a Rock 🪨"
+        # Adjust labels if model outputs 'R'/'M'
+        if prediction in ['R', 'M']:
+            result = "It is a Mine 🚀" if prediction == 'M' else "It is a Rock 🪨"
+        else:
+            result = "It is a Mine 🚀" if prediction == 1 else "It is a Rock 🪨"
+
         st.success(result)
 
     except Exception as e:
