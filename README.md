@@ -1,10 +1,6 @@
 # Rock vs Mine Prediction
 
-A **Machine Learning** & **Deep Learning** project to classify sonar signals as either **Rock** or **Mine**.
-
-- **Logistic Regression** & **Random Forest** for baseline comparisons  
-- **Deep Neural Network** for improved performance  
-- **Streamlit Web App** for real-time predictions  
+A Machine Learning and Deep Learning-based classification project to distinguish between underwater rocks and mines using sonar signal data. Deployed as an interactive web app with real-time prediction capability using Streamlit.
 
 ---
 
@@ -17,24 +13,14 @@ This project builds **multiple classification models** (**ML + Deep Learning**) 
 ## 2. Project Structure
 ```bash
 rock-vs-mine-prediction/
-│
-├── data/
-│   └── Copy of sonar data.csv           # Dataset
-│
-├── models/
-│   ├── trained_model.sav               # Logistic Regression model
-│   └── deep_model.h5                   # Deep Learning model
-│
-├── notebooks/
-│   └── Rock_vs_Mine_Prediction.ipynb    # Data exploration & model training
-│
-├── src/
-│   ├── predictive_system.py            # ML prediction script
-│   └── deep_model.py                   # Neural Network training script
-│
-├── app.py                               # Streamlit app
-├── requirements.txt                     # Dependencies
-└── README.md                            # Documentation
+├── README.md
+├── Rock Vs Mine.py
+├── Rock_vs_Mine_Prediction.ipynb
+├── header_image.jpg
+├── predictive_system.py
+├── requirements.txt
+└── trained_model.sav
+
 ```
 ---
 
@@ -103,11 +89,16 @@ Logistic Regression	83.42%	76.19%
 Random Forest	100%	76.19%
 Deep Neural Network	96%	80–82%
 
+## 8.Working Web Application model
+The Streamlit app interface correctly classifies an object as a Rock based on sonar inputs.
+<img width="1153" height="948" alt="image" src="https://github.com/user-attachments/assets/ac2d322a-9f06-4606-a6d5-67a7d174b604" />
+
 ## 8. Future Enhancements
-Deploy the application on Streamlit Cloud / Render for public access
 Add hyperparameter tuning for better performance
 Use SHAP/LIME for interpretability (understanding model decisions)
+
 
 ## 9. Author
 Monisha Patnana
 (Machine Learning & Deep Learning Enthusiast)
+
