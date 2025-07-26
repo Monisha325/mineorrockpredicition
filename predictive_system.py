@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 
 # Load your trained model
-model = joblib.load('trained_model.pkl')
+model = joblib.load('trained_model.sav')
 
 # Set Streamlit page config
 st.set_page_config(page_title="Rock vs Mine Prediction", layout="centered")
